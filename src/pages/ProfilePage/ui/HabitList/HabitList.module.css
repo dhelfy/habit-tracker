@@ -1,0 +1,6 @@
+.habitList {
+    display: flex;
+    width: max-content;
+    flex-direction: column;
+    gap: 10px;
+}
