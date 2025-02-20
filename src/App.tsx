@@ -10,6 +10,7 @@ export const App: FC = () => {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route path="profile" element={<ProfilePage />} />
+          <Route path='*' element={<ProfilePage />} />
         </Route>
       </Routes>
     </>

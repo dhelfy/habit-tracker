@@ -1,5 +1,6 @@
 import { FC } from "react";
 import styles from "./HabitItem.module.css"
+import { useNavigate } from "react-router-dom";
 
 interface HabitItem {
     title: string;
@@ -14,9 +15,10 @@ interface HabitItem {
 export const HabitItem: FC<HabitItem> = ({ title, stats, icon }) => {
     const goal = stats.goal.split(" ")
     const best = stats.best.split(" ")
+    const navigate = useNavigate()
 
     return (
-        <div className={styles.habitItem}>
+        <div className={styles.habitItem} onClick={() => navigate("/")}>
             <img src={icon} className={styles.icon}/>
             <div className={styles.habitDesc}>
                 <h1 className={styles.title}> {title} </h1>

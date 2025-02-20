@@ -1,0 +1,24 @@
+.menuContainer {
+    display: flex;
+    width: 100%;
+    margin-left: 17px;
+    margin-top: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.searchBox {
+    width: 240px;
+    height: 42px;
+    border-radius: 50px;
+    background-color: #18161A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #C9C2C3;
+    border: 1px #C9C2C3 solid;
+    margin: 15px;
+    cursor: pointer;
+    user-select: none;
+}

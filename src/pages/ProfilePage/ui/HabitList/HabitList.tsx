@@ -16,7 +16,8 @@ export const HabitList: FC = () => {
                     desc: "Уже появилось отвращение к сигаретному дыму"
                 }
             ],
-            icon: "https://i.imgur.com/peLJdSB.png"
+            icon: "https://i.imgur.com/peLJdSB.png",
+            id: 1,
         },
         {
             goal: "21 день",
@@ -24,7 +25,8 @@ export const HabitList: FC = () => {
             best: "12 дней",
             title: "Сладости",
             achievements: [],
-            icon: "https://i.imgur.com/XaiBs5C.png"
+            icon: "https://i.imgur.com/XaiBs5C.png",
+            id: 2,
         }
     ]
 
@@ -40,6 +42,7 @@ export const HabitList: FC = () => {
                             best: habit.best
                         }}
                         icon={habit.icon}
+                        key={habit.id}
                     />
                 )
             })}
