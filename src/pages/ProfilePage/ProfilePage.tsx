@@ -2,9 +2,15 @@ import { FC, useState } from "react";
 import { HabitList } from "./ui/HabitList/HabitList";
 import { NavBar } from "./ui/HabitList/ui/NavBar/NavBar";
 import styles from "./ProfilePage.module.css"
+import { useNavigate } from "react-router-dom";
 
 export const ProfilePage: FC = () => {
     let [closed, setClosed] = useState<boolean>(true)
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/new');
+    }
 
     return (
         <>
@@ -15,6 +21,9 @@ export const ProfilePage: FC = () => {
                 Поиск
             </div>
             <NavBar closed={closed} setClosed={setClosed}/>
+            <button className={styles.addButton} onClick={handleClick}>
+                +
+            </button>
             <HabitList />
         </>
     )

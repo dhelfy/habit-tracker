@@ -1,0 +1,11 @@
+.cstmInput {
+    height: 40px;
+    border: 2px solid #C9C2C37A;
+    background-color: #000;
+    border-radius: 8px;
+    padding: 11px 13px;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #C9C2C37A;
+    font-weight: 800;
+}

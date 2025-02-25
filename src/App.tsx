@@ -2,7 +2,8 @@ import { FC } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { ProfilePage } from './pages/ProfilePage/ProfilePage'
 import { Layout } from './pages/Layout/Layout'
-
+import { AuthPage } from './pages/AuthPage/AuthPage'
+import { NewHabitPage } from './pages/NewHabitPage/NewHabitPage'
 export const App: FC = () => {
 
   return (
@@ -10,7 +11,8 @@ export const App: FC = () => {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route path="profile" element={<ProfilePage />} />
-          <Route path='*' element={<ProfilePage />} />
+          <Route path="auth" element={<AuthPage />} />
+          <Route path="new" element={<NewHabitPage />} />
         </Route>
       </Routes>
     </>
