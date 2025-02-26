@@ -3,6 +3,7 @@ import { HabitList } from "./ui/HabitList/HabitList";
 import { NavBar } from "./ui/HabitList/ui/NavBar/NavBar";
 import styles from "./ProfilePage.module.css"
 import { useNavigate } from "react-router-dom";
+import { AddButton } from "../../shared/ui/AddButton/AddButton";
 
 export const ProfilePage: FC = () => {
     let [closed, setClosed] = useState<boolean>(true)
@@ -21,9 +22,10 @@ export const ProfilePage: FC = () => {
                 Поиск
             </div>
             <NavBar closed={closed} setClosed={setClosed}/>
-            <button className={styles.addButton} onClick={handleClick}>
-                +
-            </button>
+            <AddButton 
+                onClick={handleClick} 
+                className={styles.profilePageAddButton}
+            />
             <HabitList />
         </>
     )

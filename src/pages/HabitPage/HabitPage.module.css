@@ -1,0 +1,70 @@
+.habitPage {
+    padding-top: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon {
+    width: 175px;
+    height: 175px;
+}
+
+.habitPageBackButton {
+    position: absolute;
+    left: 19px;
+}
+
+.pink {
+    color: #C700FD;
+}
+
+.habitStat, .habitStatVertical {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.habitStatVertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.habitStats {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.relapseButton {
+    width: 120px;
+    height: 91px;
+    border: 4px solid #C9C2C3;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 19px;
+    font-weight: 900;
+}
+
+.historySection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 -19px;
+    padding: 0 19px;
+    box-sizing: border-box;
+}
+
+.divider {
+    width: 375px;
+    border: 0.5px solid #C9C2C3;
+    margin-top: 7px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}

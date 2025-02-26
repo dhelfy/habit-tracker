@@ -1,6 +1,7 @@
 import { FC } from "react"
 import styles from "./NewHabitPage.module.css"
 import { useNavigate } from "react-router-dom";
+import { BackButton } from "../../shared/ui/BackButton/BackButton";
 
 export const NewHabitPage: FC = () => {
 
@@ -16,12 +17,7 @@ export const NewHabitPage: FC = () => {
 
     return (
         <div className={styles.newHabitPage}>
-            <img 
-                src="./icons/Back.png" 
-                alt="back_icon" 
-                className={styles.backButton} 
-                onClick={handleBackClick}
-            />
+            <BackButton onClick={handleBackClick} />
 
             <div className={styles.habitIconSection}>
                 <h1 className={styles.title}>Выбрать иконку</h1>

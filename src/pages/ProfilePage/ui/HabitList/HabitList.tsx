@@ -1,34 +1,20 @@
-import { FC } from "react"
+import { FC, useEffect, useState } from "react"
 import styles from "./HabitList.module.css"
 import { HabitItem } from "./ui/HabitItem/HabitItem"
+import { IHabit } from "../../../../types/types"
+import axios from "axios"
 
 export const HabitList: FC = () => {
-    const habits = [
-        {
-            goal: "3 дня",
-            tryCount: 13,
-            best: "6 дней",
-            title: "Курение",
-            achievements: [
-                {
-                    date: "03.02.2025",
-                    time: "12:20",
-                    desc: "Уже появилось отвращение к сигаретному дыму"
-                }
-            ],
-            icon: "https://i.imgur.com/peLJdSB.png",
-            id: 1,
-        },
-        {
-            goal: "21 день",
-            tryCount: 18,
-            best: "12 дней",
-            title: "Сладости",
-            achievements: [],
-            icon: "https://i.imgur.com/XaiBs5C.png",
-            id: 2,
+    const [habits, setHabits] = useState<IHabit[]>([])
+
+    useEffect(() => {
+        const fetchHabits = async () => {
+            let habits = await axios.get<IHabit[]>("http://10.3.18.54:10000/habits/testuser")
+            setHabits(habits.data)
         }
-    ]
+
+        fetchHabits()
+    }, [])
 
     return (
         <div className={styles.habitList}>
@@ -37,12 +23,13 @@ export const HabitList: FC = () => {
                     <HabitItem 
                         title={habit.title}
                         stats={{
-                            goal: habit.goal,
+                            goal: habit.goal.toString(),
                             tryCount: habit.tryCount,
-                            best: habit.best
+                            best: habit.best.toString()
                         }}
                         icon={habit.icon}
                         key={habit.id}
+                        id={habit.id}
                     />
                 )
             })}
