@@ -1,0 +1,17 @@
+.message {
+    display: flex;
+    gap: 5px;
+    height: 36px;
+    position: relative;
+    left: 240px;
+}
+
+.textBlob {
+    background-color: #106abe;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.avatar {
+    border-radius: 30px;
+}

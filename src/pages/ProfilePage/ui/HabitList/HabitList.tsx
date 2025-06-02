@@ -9,7 +9,7 @@ export const HabitList: FC = () => {
 
     useEffect(() => {
         const fetchHabits = async () => {
-            let habits = await axios.get<IHabit[]>("http://10.3.18.54:10000/habits/testuser")
+            let habits = await axios.get<IHabit[]>("http://10.3.19.24:10000/habits/log01")
             setHabits(habits.data)
         }
 

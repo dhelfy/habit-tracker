@@ -70,6 +70,10 @@ export const HabitPage: FC = () => {
                 />
             </div>
             <hr className={styles.divider}/>
+
+            <div className={styles.chatLink} onClick={() => navigate("/chat")}>
+                <h2>Анонимный чат</h2>
+            </div>
         </div>
     )
 }

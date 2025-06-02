@@ -7,8 +7,8 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../state/slices/userSlice/userSlice";
 
 export const AuthPage: FC = () => {
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
+  const [login, setLogin] = useState("log01");
+  const [password, setPassword] = useState("pass01");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   

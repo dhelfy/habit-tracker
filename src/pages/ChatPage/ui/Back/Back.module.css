@@ -1,0 +1,14 @@
+.backIcon {
+    width: 19px;
+    height: 28px;
+}
+
+.backButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
