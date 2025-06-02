@@ -1,20 +1,19 @@
-import { FC } from "react";
+import { FC, InputHTMLAttributes } from "react";
 import styles from './CstmInput.module.css'
 
-interface CstmInputProps {
+interface CstmInputProps extends InputHTMLAttributes<HTMLInputElement>{
     placeholder: string;
     value: string;
-    onChange: (value: string) => void;
 }
 
-export const CstmInput: FC<CstmInputProps> = ({ placeholder, value, onChange }) => {
+export const CstmInput: FC<CstmInputProps> = ({ placeholder, value, ...props }) => {
     return (
         <input 
             type="text"
             className={styles.cstmInput} 
             placeholder={placeholder} 
             value={value} 
-            onChange={(e) => onChange(e.target.value)} 
+            {...props}
         />
     )
 }

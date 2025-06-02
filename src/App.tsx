@@ -6,6 +6,7 @@ import { AuthPage } from './pages/AuthPage/AuthPage'
 import { NewHabitPage } from './pages/NewHabitPage/NewHabitPage'
 import { HabitPage } from './pages/HabitPage/HabitPage'
 import { ChatPage } from './pages/ChatPage/ChatPage'
+import { RegPage } from './pages/RegPage/RegPage'
 
 export const App: FC = () => {
 
@@ -15,6 +16,7 @@ export const App: FC = () => {
         <Route path='/' element={<Layout />}>
           <Route path="profile" element={<ProfilePage />} />
           <Route path="auth" element={<AuthPage />} />
+          <Route path="registration" element={<RegPage />}/>
           <Route path="new" element={<NewHabitPage />} />
           <Route path="habit/:id" element={<HabitPage />} />
           <Route path="chat" element={<ChatPage />}/>

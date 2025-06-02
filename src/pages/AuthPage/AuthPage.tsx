@@ -35,14 +35,14 @@ export const AuthPage: FC = () => {
   return (
     <div className={styles.authPage}>
       <div className={styles.form}>
-        <h1 className={styles.title}>Log in</h1>
+        <h1 className={styles.title}>Вход</h1>
         <img 
           src="./icons/leaderboard_icon.png" 
           alt="leaderboard_icon" 
           className={styles.icon}
         />
-        <CstmInput placeholder="Login" value={login} onChange={setLogin} />
-        <CstmInput placeholder="Password" value={password} onChange={setPassword} />
+        <CstmInput placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} />
+        <CstmInput placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <button className={styles.button} onClick={handleClick}>Продолжить</button>
       </div>
     </div>
