@@ -1,7 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "types": ["jest", "@testing-library/jest-dom", "src/types.d.ts"],
+    "module": "ESNext",
     "noEmit": true,
     "jsx": "react-jsx"
   }
