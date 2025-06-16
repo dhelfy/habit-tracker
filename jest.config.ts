@@ -1,22 +1,16 @@
 import type { Config } from 'jest';
 
 const config: Config = {
-  preset: 'ts-jest/presets/default-esm',
-  testEnvironment: 'jsdom',
-  transform: {
-    '^.+\\.tsx?$': [
-      'ts-jest',
-      {
-        tsconfig: 'tsconfig.test.json',
-        useESM: true,
-      },
-    ],
-  },
-  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
-  moduleNameMapper: {
-    '\\.module\\.css$': '<rootDir>/__mocks__/styleMock.ts',
-  },
-  extensionsToTreatAsEsm: ['.ts', '.tsx'],
-};
+    rootDir: './',
+    testEnvironment: 'jsdom',
+    setupFilesAfterEnv: ["<rootDir>/test/jest.setup.ts"],
+    transform: {
+        "^.+\\.tsx?$": "ts-jest"
+    },
+    moduleNameMapper: {
+        "\\.(gif|ttf|eot|svg|png|jpg)$": "<rootDir>/test/mocks/fileMock.js"
+    },
+    
+}
 
-export default config;
+export default config
