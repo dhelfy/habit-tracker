@@ -36,7 +36,7 @@ export const HabitList: FC = () => {
                             tryCount: habit.tryCount,
                             best: habit.best.toString()
                         }}
-                        icon={habit.icon}
+                        icon={"/icons/goal.svg"}
                         key={habit.id}
                         id={habit.id}
                     />

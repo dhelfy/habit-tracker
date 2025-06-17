@@ -24,7 +24,7 @@
 }
 
 .profilePageAddButton {
-    position: absolute;
-    bottom: 65px;
-    right: 16px;
+    position: fixed;
+    bottom: 120px;
+    right: 450px;
 }

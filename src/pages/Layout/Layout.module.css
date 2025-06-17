@@ -7,4 +7,12 @@
     height: 812px;
     border: 1px white solid;
     border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE и Edge */
+}
+
+.mainContainer::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
 }

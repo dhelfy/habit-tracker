@@ -1,7 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "./Calendar.module.css"
+import { instance } from "../../../API/axiosInstance"
+import { selectUserID } from "../../../state/slices/userSlice/userSelector"
+import { useSelector } from "react-redux"
 
 export const Calendar = () => {
+    const id = useSelector(selectUserID)
+    const [dates, setDates] = useState<{date: string, status: string;}[]>([])
     const days = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
     const monthIndexes = [
         "Январь", "Февраль", "Март", "Апрель",
@@ -12,7 +17,6 @@ export const Calendar = () => {
     let today = new Date();
     let [monthAndYear, setMonthAndYear] = useState({ month: today.getMonth(), year: today.getFullYear() });
     let date = new Date(monthAndYear.year, monthAndYear.month + 1, 0);
-    let [activeDate, setActiveDate] = useState(today.getDate())
     let firstDayOfMonth = new Date(monthAndYear.year, monthAndYear.month, 1);
     let startIndex = firstDayOfMonth.getDay() === 0 ? 6 : firstDayOfMonth.getDay() - 1;
 
@@ -41,22 +45,48 @@ export const Calendar = () => {
         });
     };
 
+    const formatDateForComparison = (day: string) => {
+        return `${monthAndYear.year}-${monthAndYear.month + 1}-${day}`;
+    };
+
+    const getIconForDay = (day: string) => {
+        if (day === " ") return null;
+        
+        const formattedDate = formatDateForComparison(day);
+        const foundDate = dates.find(d => d.date === formattedDate);
+        return foundDate ? `/icons/${foundDate.status}.png` : null;
+    };
+
+    useEffect(() => {
+        const fetchDates = async () => {
+            try {
+                const response = await instance.get(`user/api/getDates/${id}`)
+                setDates(response.data)
+                if (response.status === 200) console.log("ok")
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        fetchDates()
+    }, [])
+
     return (
         <div className={styles.calendar}>
             <div className={styles.header}>
-                <img
+                {/* <img
                     src="/icons/Back.png"
                     alt="back_icon"
                     className={styles.arrow}
                     onClick={() => switchMonth(-1)}
-                />
+                /> */}
                 <p>{monthIndexes[monthAndYear.month]}</p>
-                <img
+                {/* <img
                     src="/icons/Back.png"
                     alt="back_icon"
                     className={styles.arrow + ' ' + styles.next}
                     onClick={() => switchMonth(1)}
-                />
+                /> */}
             </div>
             <div className={styles.days}>
                 {
@@ -68,19 +98,18 @@ export const Calendar = () => {
             <div className={styles.dates}>
                 {
                     daysOfTheMonth.map((day, index) => {
+                        const status = getIconForDay(day);
                         return (
-                            day === activeDate.toString() ?  
-                            <p key={index} className={styles.dateActive + ' ' + styles.date}>
+                            day === today.getDate().toString() ?  
+                            <div key={index} className={styles.dateActive + ' ' + styles.date}>
                                 {day}
-                            </p> 
+                                {status && <img src={status} className={styles.status}/>}
+                            </div> 
                             :
-                            <p 
-                                key={index} 
-                                className={styles.date}
-                                onClick={() => setActiveDate(parseInt(day))}
-                            >
+                            <div key={index} className={styles.date}>
                                 {day}
-                            </p>
+                                {status && <img src={status} className={styles.status}/>}
+                            </div>
                         )
                     })
                 }

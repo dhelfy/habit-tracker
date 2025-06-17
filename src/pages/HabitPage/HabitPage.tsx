@@ -22,7 +22,14 @@ export const HabitPage: FC = () => {
 
     useEffect(() => {
         const fetchHabit = async () => {
-            const habit = await instance.get<IHabit>(`/habits/${currentUser}/${id}`)
+            const habit = await instance.get<IHabit>(
+                `habit/api/getHabits/${id}`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${window.localStorage.getItem('accessToken')}`
+                    }
+                }
+            )
             setHabit(habit.data)
         }
         fetchHabit()
@@ -40,7 +47,7 @@ export const HabitPage: FC = () => {
             />
             <h1>{habit?.title}</h1>
             <img 
-                src={habit?.icon} 
+                src={"/icons/goal.svg"} 
                 alt="habit_icon" 
                 className={styles.icon}
             />
@@ -73,6 +80,9 @@ export const HabitPage: FC = () => {
 
             <div className={styles.chatLink} onClick={() => navigate("/chat")}>
                 <h2>Анонимный чат</h2>
+            </div>
+            <div className={styles.chatLink} onClick={() => navigate("/mood")}>
+                <h2>Самоощущение</h2>
             </div>
         </div>
     )

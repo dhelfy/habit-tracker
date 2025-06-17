@@ -1,5 +1,8 @@
 import { FC } from "react";
 import styles from "./NavBar.module.css"
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../../../../state/slices/userSlice/userSlice";
 
 interface NavBarProps {
     closed: boolean;
@@ -7,23 +10,28 @@ interface NavBarProps {
 }
 
 export const NavBar: FC<NavBarProps> = ({closed, setClosed}) => {
+    const dispatch = useDispatch();
+
     return (
         <div id={styles.mySidenav} className={closed ? styles.sidenav : styles.sidenav + ' ' + styles.opened}>
             <span className={styles.closebtn} onClick={() => setClosed(!closed)}>&times;</span>
             <div className={styles.link}>
-                <a href="#">Домой</a>
+                <Link to="/profile">Домой</Link>
             </div>
             <div className={styles.link}>
-                <a href="#">Поддержка</a>
+                <Link to="/profile">Поддержка</Link>
             </div>
             <div className={styles.link}>
-                <a href="#">Другое</a>
+                <Link to="/profile">Другое</Link>
             </div>
             <div className={styles.link}>
-                <a href="#">Оценить</a>
+                <Link to="/profile">Оценить</Link>
             </div>
             <div className={styles.link}>
-                <a href="#">Поделиться</a>
+                <Link to="/profile">Поделиться</Link>
+            </div>
+            <div className={styles.link} onClick={() => dispatch(logout())}>
+                <Link to="/auth">Выйти</Link>
             </div>
         </div>
     )

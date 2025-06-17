@@ -18,9 +18,9 @@ export const ProfilePage: FC = () => {
             <div className={styles.menuContainer} onClick={() => setClosed(false)}>
                 <span>&#9776;</span>
             </div>
-            <div className={styles.searchBox}>
+            {/* <div className={styles.searchBox}>
                 Поиск
-            </div>
+            </div> */}
             <NavBar closed={closed} setClosed={setClosed}/>
             <AddButton 
                 onClick={handleClick} 

@@ -4,7 +4,7 @@ import { CstmInput } from "../../shared/ui/CstmInput/CstmInput";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../../API/axiosInstance";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../state/slices/userSlice/userSlice";
+import { setUser, setUserID } from "../../state/slices/userSlice/userSlice";
 
 export const AuthPage: FC = () => {
   const [login, setLogin] = useState("testLogin");
@@ -20,15 +20,12 @@ export const AuthPage: FC = () => {
       });
       
       if (response.status === 200) {
-        dispatch(setUser({ 
-          user: login
-        }));
+        dispatch(setUser({ user: login }));
+        dispatch(setUserID({ id: response.data.userId }));
+
         window.localStorage.setItem('accessToken', response.data.accessToken)
         window.localStorage.setItem('refreshToken', response.data.refreshToken)
-        console.log(window.localStorage.getItem('accessToken'))
-        console.log(response.status)
-        console.log(response.data)
-        // console.log(window.localStorage.getItem('refreshToken'))
+        
         navigate("/profile")
       }
     } catch (error: any) {

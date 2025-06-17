@@ -1,0 +1,31 @@
+.moodPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding-top: 20px;
+}
+
+.header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.moodForm {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+.moodVariant {
+    width: 307px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #18161A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 14px 0px 14px;
+    cursor: pointer;
+}

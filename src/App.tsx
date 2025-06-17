@@ -10,6 +10,7 @@ import { RegPage } from './pages/RegPage/RegPage'
 import { ProtectedRoute } from './features/auth/ProtectedRoute'
 import { useSelector } from 'react-redux'
 import { selectIsAuthenticated } from './state/slices/userSlice/userSelector'
+import { MoodPage } from './pages/MoodPage/MoodPage'
 
 export const App: FC = () => {
   const isAuth = useSelector(selectIsAuthenticated)
@@ -35,6 +36,10 @@ export const App: FC = () => {
           <Route 
             path="chat" 
             element={<ProtectedRoute isAuth={isAuth}><ChatPage /></ProtectedRoute>} 
+          />
+          <Route 
+            path="mood" 
+            element={<ProtectedRoute isAuth={isAuth}><MoodPage /></ProtectedRoute>} 
           />
         </Route>
       </Routes>
