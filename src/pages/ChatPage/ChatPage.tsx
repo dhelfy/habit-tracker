@@ -28,8 +28,8 @@ export const ChatPage = () => {
                     onChange={(e) => setValue(e.currentTarget.value)}
                     className={styles.input}
                     placeholder="Сообщение..."
+                    onKeyDown={(e) => {if (e.key === 'Enter') onSend()}}
                 />
-                <button className={styles.sendBtn} onClick={onSend}>Отправить</button>
             </div>
         </div>
     )

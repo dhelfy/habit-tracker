@@ -25,6 +25,14 @@
     grid-template-columns: repeat(7, auto);
 }
 
+.date {
+    cursor: pointer;
+}
+
+.dateActive {
+    background-color: #C600FD;
+}
+
 .weekend p {
     color: #C600FD;
 }

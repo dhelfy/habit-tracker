@@ -12,6 +12,7 @@ export const Calendar = () => {
     let today = new Date();
     let [monthAndYear, setMonthAndYear] = useState({ month: today.getMonth(), year: today.getFullYear() });
     let date = new Date(monthAndYear.year, monthAndYear.month + 1, 0);
+    let [activeDate, setActiveDate] = useState(today.getDate())
     let firstDayOfMonth = new Date(monthAndYear.year, monthAndYear.month, 1);
     let startIndex = firstDayOfMonth.getDay() === 0 ? 6 : firstDayOfMonth.getDay() - 1;
 
@@ -20,7 +21,7 @@ export const Calendar = () => {
     }
 
     for (let i = 1; i <= date.getDate(); i++) {
-        daysOfTheMonth.push(i)
+        daysOfTheMonth.push(`${i}`)
     }
 
     const switchMonth = (dir: 1 | -1) => {
@@ -39,7 +40,6 @@ export const Calendar = () => {
             return { month: newMonth, year: newYear };
         });
     };
-
 
     return (
         <div className={styles.calendar}>
@@ -66,7 +66,24 @@ export const Calendar = () => {
                 }
             </div>
             <div className={styles.dates}>
-                {daysOfTheMonth.map((day, index) => <p key={index}>{day}</p>)}
+                {
+                    daysOfTheMonth.map((day, index) => {
+                        return (
+                            day === activeDate.toString() ?  
+                            <p key={index} className={styles.dateActive + ' ' + styles.date}>
+                                {day}
+                            </p> 
+                            :
+                            <p 
+                                key={index} 
+                                className={styles.date}
+                                onClick={() => setActiveDate(parseInt(day))}
+                            >
+                                {day}
+                            </p>
+                        )
+                    })
+                }
             </div>
         </div>
     )

@@ -2,25 +2,34 @@ import { FC, useEffect, useState } from "react"
 import styles from "./HabitList.module.css"
 import { HabitItem } from "./ui/HabitItem/HabitItem"
 import { IHabit } from "../../../../types/types"
-import axios from "axios"
+import { instance } from "../../../../API/axiosInstance"
 
 export const HabitList: FC = () => {
     const [habits, setHabits] = useState<IHabit[]>([])
 
     useEffect(() => {
-        const fetchHabits = async () => {
-            let habits = await axios.get<IHabit[]>("http://10.3.19.24:10000/habits/log01")
-            setHabits(habits.data)
-        }
+    const fetchHabits = async () => {
+        let habits = await instance.post<IHabit[]>(
+            "habit/api/getAllHabits/",
+            {}, // пустой JSON, а не null
+            {
+                headers: {
+                    Authorization: `Bearer ${window.localStorage.getItem('accessToken')}`,
+                    "Content-Type": "application/json",
+                }
+            }
+        );
+        setHabits(habits.data);
+    };
 
-        fetchHabits()
-    }, [])
+    fetchHabits();
+}, []);
 
     return (
         <div className={styles.habitList}>
             {habits.map((habit) => {
                 return (
-                    <HabitItem 
+                    <HabitItem
                         title={habit.title}
                         stats={{
                             goal: habit.goal.toString(),

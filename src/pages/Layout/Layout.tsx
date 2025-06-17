@@ -6,7 +6,7 @@ import { Calendar } from "../../shared/ui/Calendar/Calendar";
 export const Layout: FC = () => {
     return (
         <main className={styles.mainContainer}>
-            <Calendar />
+            {/* <Calendar /> */}
             <Outlet />
         </main>
     )

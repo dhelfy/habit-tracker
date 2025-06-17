@@ -7,14 +7,14 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../state/slices/userSlice/userSlice";
 
 export const AuthPage: FC = () => {
-  const [login, setLogin] = useState("log01");
-  const [password, setPassword] = useState("pass01");
+  const [login, setLogin] = useState("testLogin");
+  const [password, setPassword] = useState("testPass");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
   const handleClick = async () => {
     try {
-      const response = await instance.post("/auth/login", {
+      const response = await instance.post("user/api/authUser", {
         login,
         password
       });
@@ -23,6 +23,12 @@ export const AuthPage: FC = () => {
         dispatch(setUser({ 
           user: login
         }));
+        window.localStorage.setItem('accessToken', response.data.accessToken)
+        window.localStorage.setItem('refreshToken', response.data.refreshToken)
+        console.log(window.localStorage.getItem('accessToken'))
+        console.log(response.status)
+        console.log(response.data)
+        // console.log(window.localStorage.getItem('refreshToken'))
         navigate("/profile")
       }
     } catch (error: any) {

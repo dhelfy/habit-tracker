@@ -7,19 +7,35 @@ import { NewHabitPage } from './pages/NewHabitPage/NewHabitPage'
 import { HabitPage } from './pages/HabitPage/HabitPage'
 import { ChatPage } from './pages/ChatPage/ChatPage'
 import { RegPage } from './pages/RegPage/RegPage'
+import { ProtectedRoute } from './features/auth/ProtectedRoute'
+import { useSelector } from 'react-redux'
+import { selectIsAuthenticated } from './state/slices/userSlice/userSelector'
 
 export const App: FC = () => {
+  const isAuth = useSelector(selectIsAuthenticated)
 
   return (
     <>
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route path="profile" element={<ProfilePage />} />
+          <Route 
+            path="profile" 
+            element={<ProtectedRoute isAuth={isAuth}><ProfilePage /></ProtectedRoute>}
+          />
           <Route path="auth" element={<AuthPage />} />
-          <Route path="registration" element={<RegPage />}/>
-          <Route path="new" element={<NewHabitPage />} />
-          <Route path="habit/:id" element={<HabitPage />} />
-          <Route path="chat" element={<ChatPage />}/>
+          <Route path="registration" element={<RegPage />} />
+          <Route 
+            path="new" 
+            element={<ProtectedRoute isAuth={isAuth}><NewHabitPage /></ProtectedRoute>} 
+          />
+          <Route 
+            path="habit/:id" 
+            element={<ProtectedRoute isAuth={isAuth}><HabitPage /></ProtectedRoute>} 
+          />
+          <Route 
+            path="chat" 
+            element={<ProtectedRoute isAuth={isAuth}><ChatPage /></ProtectedRoute>} 
+          />
         </Route>
       </Routes>
     </>
